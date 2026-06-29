@@ -1,35 +1,80 @@
-# Diário de Bordo - PWA
+# Diário de Bordo – Otimização de Performance Web
 
-Aplicação Web Progressiva (PWA) desenvolvida para registro de atividades diárias.
+## Descrição do Projeto
 
-## Funcionalidades
+O **Diário de Bordo** é uma Aplicação Web Progressiva (PWA) desenvolvida para permitir o registro de atividades diárias do usuário. A aplicação possibilita criar, visualizar e remover registros, funcionando também em modo offline por meio de Service Workers e persistindo os dados localmente com `localStorage`.
 
-* Criar entradas com título, descrição e data
-* Listar entradas cadastradas
-* Remover entradas
-* Persistência de dados utilizando LocalStorage
-* Funcionamento offline com Service Worker
-* Instalação como aplicativo (PWA)
-* Interface responsiva para desktop e dispositivos móveis
+Além disso, o aplicativo pode ser instalado na tela inicial de dispositivos compatíveis, proporcionando uma experiência semelhante à de um aplicativo nativo.
 
-## Tecnologias Utilizadas
+---
 
-* HTML5
-* CSS3
-* JavaScript
-* LocalStorage
-* Service Worker
-* Web App Manifest
+## Análise Inicial
 
-## Estrutura do Projeto
+A análise de desempenho foi realizada utilizando a ferramenta **Lighthouse** do Chrome DevTools.
 
-* index.html
-* style.css
-* script.js
-* manifest.json
-* service-worker.js
-* icons/
+### Resultados iniciais
 
-## Autor
+* **Performance:** 99
+* **Accessibility:** 100
+* **Best Practices:** 100
+* **SEO:** 100
 
-Celso
+### Métricas observadas
+
+* **First Contentful Paint (FCP):** 1,4 s
+* **Largest Contentful Paint (LCP):** 1,4 s
+* **Total Blocking Time (TBT):** 90 ms
+* **Cumulative Layout Shift (CLS):** 0
+* **Speed Index:** 1,4 s
+
+### Gargalos identificados
+
+Embora o projeto já apresentasse excelente desempenho, o Lighthouse indicou algumas oportunidades de otimização:
+
+* Utilização de imagens no formato PNG para os ícones do PWA;
+* Arquivos CSS e JavaScript sem minificação;
+* Presença de pequeno trecho de código de depuração (`console.log`).
+
+---
+
+## Melhorias Aplicadas
+
+As seguintes otimizações foram implementadas:
+
+* Conversão dos ícones do aplicativo de **PNG** para **WebP**, reduzindo o tamanho dos arquivos;
+* Atualização do `manifest.json` para utilizar os novos ícones otimizados;
+* Atualização do `service-worker.js` para armazenar em cache os arquivos WebP;
+* Remoção de código de depuração não utilizado.
+
+---
+
+## Comparação dos Resultados
+
+| Métrica     | Antes | Depois |
+| ----------- | ----- | ------ |
+| Performance | 99    | 99     |
+| FCP         | 1,4 s | 1,5 s  |
+| LCP         | 1,4 s | 1,5 s  |
+| TBT         | 90 ms | 110 ms  |
+| CLS         | 0     | 0      |
+| Speed Index | 1,4 s | 1,5 s  |
+
+---
+
+## Considerações Finais
+
+O projeto já possuía uma arquitetura simples e leve, o que contribuiu para uma excelente pontuação inicial no Lighthouse.
+
+As otimizações aplicadas seguiram boas práticas recomendadas para aplicações web modernas, especialmente no uso de imagens otimizadas e remoção de recursos desnecessários.
+
+Mesmo sem mudanças significativas na pontuação final, as melhorias realizadas tornam a aplicação mais eficiente e alinhada às recomendações de performance para Progressive Web Apps (PWAs).
+
+---
+
+## Evidências
+
+O repositório contém imagens dos relatórios do Lighthouse gerados antes e depois das otimizações realizadas.
+
+**Relatório inicial:** `antes.png`
+
+**Relatório final:** `depois.png`
