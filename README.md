@@ -61,6 +61,19 @@ As seguintes otimizações foram implementadas:
 
 ---
 
+## Redução do tamanho dos arquivos
+
+Além da análise realizada pelo Lighthouse, foi comparado o tamanho dos ícones utilizados pelo PWA.
+
+| Arquivo | PNG | WebP | Redução |
+|---------|----:|-----:|---------:|
+| icon-192| 8 KB|6.37 KB| 21% |
+| icon-512|48 KB|46.5 KB| 4% |
+
+A conversão para WebP reduziu significativamente o tamanho dos recursos utilizados pelo aplicativo, diminuindo a quantidade de dados transferidos durante o carregamento.
+
+---
+
 ## Considerações Finais
 
 O projeto já possuía uma arquitetura simples e leve, o que contribuiu para uma excelente pontuação inicial no Lighthouse.
